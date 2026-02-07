@@ -1,5 +1,5 @@
 /* ==============================
-   GLOBAL RESET
+   1) GLOBAL RESET
    ============================== */
 *{
   margin: 0;
@@ -12,15 +12,8 @@ html, body{
   overflow-x: hidden;
 }
 
-/* Safe images */
-img{
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
 /* ==============================
-   BODY
+   2) BASE (BODY + IMAGES)
    ============================== */
 body{
   background-color: lightgrey;
@@ -29,7 +22,7 @@ body{
 }
 
 /* ==============================
-   HEADER
+   3) HEADER
    ============================== */
 header{
   background: linear-gradient(to right, #ff9933, #ffffff, #138808);
@@ -46,14 +39,17 @@ header p{
 }
 
 /* ==============================
-   NAVBAR
+   4) NAVBAR
    ============================== */
 nav{
-  position: sticky;
+  /* ✅ If you want sticky, uncomment these 3 lines */
+  /* position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 9999; */
+
   background: #222;
   padding: 10px;
+
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -73,7 +69,7 @@ nav a:hover{
 }
 
 /* ==============================
-   MAIN CONTAINER
+   5) MAIN CONTAINER
    ============================== */
 .container{
   width: 100%;
@@ -83,7 +79,7 @@ nav a:hover{
 }
 
 /* ==============================
-   SECTION
+   6) SECTION BOX
    ============================== */
 .section{
   background: #f7f7f7;
@@ -94,7 +90,7 @@ nav a:hover{
 }
 
 /* ==============================
-   CARDS
+   7) CARDS
    ============================== */
 .cards{
   display: flex;
@@ -104,30 +100,29 @@ nav a:hover{
 }
 
 .card{
-  flex: 1 1 calc(33.333% - 18px);
-  max-width: calc(33.333% - 18px);
+  flex-basis: 20.333%;
+  max-width: 20.333%;
   background: #fafafa;
   border-radius: 10px;
   overflow: hidden;
   text-align: center;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s linear, box-shadow 0.25s linear;
 }
 
-/* Disable hover for mobile */
+/* Disable hover default (mobile safe) */
 .card:hover{
   transform: none;
   box-shadow: none;
 }
 
-/* Enable hover only on desktop */
-@media (hover: hover) and (pointer: fine){
+/* Enable hover only for laptop/desktop */
+@media (min-width: 769px){
   .card:hover{
     transform: translateY(-6px);
     box-shadow: 0 10px 22px rgba(0,0,0,0.22);
   }
 }
-
-/* Mobile tap feedback */
+/* Tap feedback for touch devices */
 @media (hover: none){
   .card:active{
     transform: scale(0.98);
@@ -137,7 +132,6 @@ nav a:hover{
 .card img{
   width: 100%;
   height: 180px;
-  border-radius: 10px;
   object-fit: cover;
 }
 
@@ -152,12 +146,35 @@ nav a:hover{
 }
 
 /* ==============================
-   FOOTER
+   8) HISTORY MAP (optional styling)
+   ============================== */
+
+   /* Safe images */
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+.map-caption{
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+.map-points{
+  margin-top: 10px;
+  padding-left: 18px;
+  list-style:decimal;
+}
+
+/* ==============================
+   9) FOOTER
    ============================== */
 .footer{
   background: #222;
   color: #fff;
   padding: 30px 10px 10px;
+  min-height: 200px;
 }
 
 .footer-container{
@@ -174,10 +191,12 @@ nav a:hover{
 
 .footer-box h3{
   color: #ff9933;
+  margin-bottom: 8px;
 }
 
 .footer-box ul{
   list-style: none;
+  padding: 0;
 }
 
 .footer-box ul li{
@@ -200,6 +219,11 @@ nav a:hover{
   gap: 16px;
   margin-top: 10px;
   list-style: none;
+  padding: 0;
+}
+
+.icon li{
+  list-style: none;
 }
 
 .icon a{
@@ -221,7 +245,7 @@ nav a:hover{
 }
 
 /* ==============================
-   RESPONSIVE
+   10) RESPONSIVE
    ============================== */
 @media only screen and (max-width: 900px){
   .card{
@@ -234,6 +258,7 @@ nav a:hover{
 
   nav{
     gap: 6px;
+    flex-wrap: wrap; /* ✅ important for mobile */
   }
 
   nav a{
@@ -246,7 +271,7 @@ nav a:hover{
     max-width: 100%;
   }
 
-  /* ✅ FIX: Footer NOT centered on mobile */
+  /* Footer left on mobile */
   .footer-container{
     flex-direction: column;
     text-align: left;
@@ -255,6 +280,7 @@ nav a:hover{
 
   .icon{
     justify-content: flex-start;
+    width: 100%;
   }
 
   .footer-bottom{
