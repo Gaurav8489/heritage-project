@@ -94,7 +94,7 @@ nav a:hover{
 }
 
 /* ==============================
-   CARDS (FLEX)
+   CARDS
    ============================== */
 .cards{
   display: flex;
@@ -103,7 +103,6 @@ nav a:hover{
   margin-top: 14px;
 }
 
-/* Desktop – 3 cards */
 .card{
   flex: 1 1 calc(33.333% - 18px);
   max-width: calc(33.333% - 18px);
@@ -114,13 +113,13 @@ nav a:hover{
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* ❌ Disable hover by default (mobile-safe) */
+/* Disable hover for mobile */
 .card:hover{
   transform: none;
   box-shadow: none;
 }
 
-/* ✅ Enable hover ONLY on desktop/laptop */
+/* Enable hover only on desktop */
 @media (hover: hover) and (pointer: fine){
   .card:hover{
     transform: translateY(-6px);
@@ -128,7 +127,7 @@ nav a:hover{
   }
 }
 
-/* Optional mobile tap feedback */
+/* Mobile tap feedback */
 @media (hover: none){
   .card:active{
     transform: scale(0.98);
@@ -201,13 +200,11 @@ nav a:hover{
   gap: 16px;
   margin-top: 10px;
   list-style: none;
- 
 }
 
 .icon a{
   color: white;
   font-size: 28px;
-   
 }
 
 .icon a:hover{
@@ -234,6 +231,7 @@ nav a:hover{
 }
 
 @media only screen and (max-width: 600px){
+
   nav{
     gap: 6px;
   }
@@ -248,8 +246,18 @@ nav a:hover{
     max-width: 100%;
   }
 
+  /* ✅ FIX: Footer NOT centered on mobile */
   .footer-container{
     flex-direction: column;
-    text-align: center;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .icon{
+    justify-content: flex-start;
+  }
+
+  .footer-bottom{
+    text-align: left;
   }
 }
