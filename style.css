@@ -200,11 +200,14 @@ nav a:hover{
   justify-content: center;
   gap: 16px;
   margin-top: 10px;
+  list-style: none;
+ 
 }
 
 .icon a{
   color: white;
   font-size: 28px;
+   
 }
 
 .icon a:hover{
