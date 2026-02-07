@@ -12,84 +12,95 @@ html, body{
   overflow-x: hidden;
 }
 
-/* Safe images */
-img{
-  max-width: 100%;
-  height: auto;
-  /* display: block; */
-}
-
-/* ==============================
-   2) BASE
-   ============================== */
+/* ✅ Sticky footer layout */
 body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-color: lightgrey;
   line-height: 1.6;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ==============================
-   3) HEADER
-   ============================== */
-.site-header{
-  background: linear-gradient(to right, #ff9933, #ffffff, #138808);
-  padding: 22px 12px;
+/* Safe images */
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-.header-content{
+/* ==============================
+   3) HEADER (NO nav tag)
+   ============================== */
+.site-header{
+  background:  linear-gradient(to right, #ff9933, #ffffff, #138808);
+  padding: 14px 12px;
+}
+
+.header-row{
   max-width: 1100px;
   margin: auto;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 18px;
-  flex-wrap: wrap;
-  text-align: center;
+}
+
+/* Left logo box */
+.logo-box{
+  flex: 0 0 auto;
+object-fit: contain;
 }
 
 .logo{
-  width: 110px;
-  height: 150px;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid rgba(0,0,0,0.15);
+}
 
+/* Center text */
+.header-text{
+  flex: 1;
+  text-align: center;
 }
 
 .header-text h1{
-  font-size: clamp(26px, 4vw, 38px);
+  font-size: clamp(22px, 3.2vw, 38px);
+  line-height: 1.1;
 }
 
 .header-text p{
-  font-size: clamp(14px, 2.2vw, 18px);
+  font-size: clamp(13px, 2vw, 18px);
+  color: #222;
 }
 
-/* ==============================
-   4) NAVBAR
-   ============================== */
-nav{
-  background: #222;
-  padding: 10px;
+/* Right menu (not nav) */
+.menu{
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
-nav a{
-  color: #fff;
+.menu a{
+  color: #111;
   text-decoration: none;
   font-weight: bold;
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
 }
 
-nav a:hover{
-  color: #ff9933;
-  background: rgba(255,255,255,0.08);
+.menu a:hover{
+  background: rgba(0,0,0,0.10);
 }
 
 /* ==============================
    5) MAIN CONTAINER
    ============================== */
 .container{
+  flex: 1;
   width: 100%;
   max-width: 1100px;
   margin: auto;
@@ -264,18 +275,19 @@ nav a:hover{
 /* ==============================
    10) RESPONSIVE
    ============================== */
-
-   @media (max-width: 600px){
-  nav{
-    gap: 6px;
-    flex-wrap: wrap;
+@media (max-width: 800px){
+  .header-row{
+    flex-direction: column;
+    align-items: center;
   }
-
-  nav a{
-    padding: 6px 8px;
-    font-size: 13px;   /* ✅ smaller text */
+  .header-text{
+    text-align: center;
+  }
+  .menu{
+    justify-content: center;
   }
 }
+
 @media (max-width: 900px){
   .card{
     flex: 1 1 calc(50% - 18px);
