@@ -1,0 +1,252 @@
+/* ==============================
+   GLOBAL RESET
+   ============================== */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body{
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Safe images */
+img{
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==============================
+   BODY
+   ============================== */
+body{
+  background-color: lightgrey;
+  line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==============================
+   HEADER
+   ============================== */
+header{
+  background: linear-gradient(to right, #ff9933, #ffffff, #138808);
+  padding: 22px 12px;
+  text-align: center;
+}
+
+header h1{
+  font-size: clamp(26px, 4vw, 38px);
+}
+
+header p{
+  font-size: clamp(14px, 2.2vw, 18px);
+}
+
+/* ==============================
+   NAVBAR
+   ============================== */
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: #222;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+nav a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+nav a:hover{
+  color: #ff9933;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ==============================
+   MAIN CONTAINER
+   ============================== */
+.container{
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px 16px 30px;
+}
+
+/* ==============================
+   SECTION
+   ============================== */
+.section{
+  background: #f7f7f7;
+  padding: 18px;
+  border-radius: 12px;
+  margin-top: 18px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* ==============================
+   CARDS (FLEX)
+   ============================== */
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+/* Desktop – 3 cards */
+.card{
+  flex: 1 1 calc(33.333% - 18px);
+  max-width: calc(33.333% - 18px);
+  background: #fafafa;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ❌ Disable hover by default (mobile-safe) */
+.card:hover{
+  transform: none;
+  box-shadow: none;
+}
+
+/* ✅ Enable hover ONLY on desktop/laptop */
+@media (hover: hover) and (pointer: fine){
+  .card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+  }
+}
+
+/* Optional mobile tap feedback */
+@media (hover: none){
+  .card:active{
+    transform: scale(0.98);
+  }
+}
+
+.card img{
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card h3{
+  color: #ff9933;
+  margin: 14px 10px 6px;
+}
+
+.card p{
+  padding: 0 14px 18px;
+  font-size: 14px;
+}
+
+/* ==============================
+   FOOTER
+   ============================== */
+.footer{
+  background: #222;
+  color: #fff;
+  padding: 30px 10px 10px;
+}
+
+.footer-container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-box{
+  flex: 1 1 220px;
+}
+
+.footer-box h3{
+  color: #ff9933;
+}
+
+.footer-box ul{
+  list-style: none;
+}
+
+.footer-box ul li{
+  margin-bottom: 6px;
+}
+
+.footer-box a{
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-box a:hover{
+  color: #ff9933;
+}
+
+/* Footer icons */
+.icon{
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.icon a{
+  color: white;
+  font-size: 28px;
+}
+
+.icon a:hover{
+  color: #ff9933;
+}
+
+/* Footer bottom */
+.footer-bottom{
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  border-top: 1px solid #444;
+  padding-top: 10px;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media only screen and (max-width: 900px){
+  .card{
+    flex-basis: calc(50% - 18px);
+    max-width: calc(50% - 18px);
+  }
+}
+
+@media only screen and (max-width: 600px){
+  nav{
+    gap: 6px;
+  }
+
+  nav a{
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .card{
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  .footer-container{
+    flex-direction: column;
+    text-align: center;
+  }
+}
